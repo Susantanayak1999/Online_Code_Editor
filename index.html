@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Live Code Editor</title>
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/c310f11be4.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="left">
+        <label> <i class="fa-brands fa-html5"></i> HTML</label>
+        <textarea id="htmlCode" onkeyup="run()"></textarea>
+
+        <label><i class="fa-brands fa-css3-alt"></i> CSS</label>
+        <textarea id="cssCode" onkeyup="run()"></textarea>
+
+        <label><i class="fa-brands fa-js"></i> JavaScript</label>
+        <textarea id="jsCode" onkeyup="run()"></textarea>
+      </div>
+      <div class="right">
+        <label><i class="fa-solid fa-play"></i> Output</label>
+        <iframe id="output"></iframe>
+      </div>
+    </div>
+    <p class="para">~~ Designed by Susanta Nayak; &copy; 2023 ~~</p>
+
+    <script>
+      function run() {
+        let htmlCode = document.getElementById("htmlCode").value;
+        let cssCode = document.getElementById("cssCode").value;
+        let jsCode = document.getElementById("jsCode").value;
+        let output = document.getElementById("output");
+
+        output.contentDocument.body.innerHTML =
+          htmlCode + "<style>" + cssCode + "</style>";
+        // output.contentDocument.body.innerHTML = cssCode;
+        output.contentWindow.eval(jsCode);
+      }
+    </script>
+  </body>
+</html>
